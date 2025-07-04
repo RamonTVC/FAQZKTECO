@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preguntas Frecuentes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .category {
+      margin-bottom: 30px;
+    }
+    .category h2 {
+      color: #007BFF;
+    }
+    .question {
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .answer {
+      display: none;
+      margin-left: 15px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Preguntas Frecuentes</h1>
+  <div class="faq-section" id="faq"></div>
+
+  <script>
+    const data = {
+      "Software": [
+        {
+          question: "¿Cómo instalo el software ZKBio Zlink?",
+          answer: "Debes descargarlo desde el portal oficial, instalarlo como administrador y seguir el asistente de instalación."
+        },
+        {
+          question: "¿Se puede usar el software sin conexión a internet?",
+          answer: "Depende del módulo, pero la mayoría requiere conexión al menos para la activación."
+        }
+      ],
+      "Equipos": [
+        {
+          question: "¿Cómo reinicio un panel de control de acceso?",
+          answer: "Presiona el botón de reset dentro del gabinete durante 10 segundos."
+        }
+      ]
+    };
+
+    const faqContainer = document.getElementById('faq');
+
+    for (const category in data) {
+      const section = document.createElement('div');
+      section.classList.add('category');
+
+      const title = document.createElement('h2');
+      title.textContent = category;
+      section.appendChild(title);
+
+      data[category].forEach(item => {
+        const q = document.createElement('div');
+        q.classList.add('question');
+        q.textContent = item.question;
+
+        const a = document.createElement('div');
+        a.classList.add('answer');
+        a.textContent = item.answer;
+
+        q.addEventListener('click', () => {
+          a.style.display = a.style.display === 'block' ? 'none' : 'block';
+        });
+
+        section.appendChild(q);
+        section.appendChild(a);
+      });
+
+      faqContainer.appendChild(section);
+    }
+  </script>
+</body>
+</html>
