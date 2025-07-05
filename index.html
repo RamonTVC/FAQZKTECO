@@ -93,7 +93,7 @@
 
         const a = document.createElement('div');
         a.classList.add('answer');
-        a.textContent = item.answer;
+        a.innerHTML = item.answer;
 
         q.addEventListener('click', () => {
           a.style.display = a.style.display === 'block' ? 'none' : 'block';
